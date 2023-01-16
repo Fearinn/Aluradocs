@@ -1,4 +1,4 @@
-# 📃 AluraDocs - Websockets
+# 📃 AluraDocs - WebSockets
 
 Project from the courses track [Node.js com Express](https://cursos.alura.com.br/formacao-node-js-express).
 
