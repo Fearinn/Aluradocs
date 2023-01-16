@@ -4,7 +4,7 @@ Project from the course track [Node.js com Express](https://cursos.alura.com.br/
 
 ## 🎯 Goals
 
-- Creating a simple text editor with realtime communication between clients;
+- Adding realtime communication between clients to a static text editor;
 - Learning Websockets with Socket.io.
 
 ## 🚀 Improvements made by me
