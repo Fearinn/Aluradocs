@@ -16,7 +16,7 @@ Project from the courses track [Node.js com Express](https://cursos.alura.com.br
 
 - Node (16.13.2);
 - Express (^4.18.2);
-- Sockert.io (^4.5.4);
+- Socket.io (^4.5.4);
 - TypeScript (^4.9.4);
 - Nodemon (^2.0.20);
 - MongoDB (^4.13).
