@@ -1,22 +1,10 @@
 # 📃 AluraDocs
 
-Project from the course track [Node.js com Express](https://cursos.alura.com.br/formacao-node-js-express).
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **AluraDocs**
+| :label: Tecnologias | node, express, socket.io, mongoDB, typescript
+| :rocket: URL         | https://trato-tech-rust.vercel.app/
+| :book: Course | https://cursos.alura.com.br/formacao-node-js-express
 
-## 🎯 Goals
-
-- Adding realtime communication between clients to a static text editor;
-- Learning WebSockets with Socket.io.
-
-## 🚀 Improvements made by me
-
-- Usage of TypeScript;
-- Better folder structure and separation of responsibilities.
-
-## 👨‍💻 Tech stack
-
-- Node (16.13.2);
-- Express (^4.18.2);
-- Socket.io (^4.5.4);
-- TypeScript (^4.9.4);
-- Nodemon (^2.0.20);
-- MongoDB (^4.13).
+This project mocks a cooperative text editor, with realtime communication between clients. The purpose was to learn WebSockets and to practice Node.
