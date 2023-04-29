@@ -1,6 +1,6 @@
-import { listenDoc } from "./document/listeners.js";
-import { listenHome } from "./home/listeners.js";
-import { listenRegistration } from "./registration/listeners.js";
+import { listenDoc } from "./listeners/document.js";
+import { listenHome } from "./listeners/home.js";
+import { listenRegistration } from "./listeners/registration.js";
 import io from "./server.js";
 
 io.on("connection", (socket) => {
