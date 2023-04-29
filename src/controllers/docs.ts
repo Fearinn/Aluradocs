@@ -10,7 +10,7 @@ export function findDocument(name: string) {
 
 export function updateDocumentDB(name: string, text: string) {
   if (collectionDocs) {
-    const update = collectionDocs?.updateOne(
+    const update = collectionDocs.updateOne(
       { name: name },
       {
         $set: {
@@ -24,7 +24,7 @@ export function updateDocumentDB(name: string, text: string) {
 
 export async function getDocuments() {
   if (collectionDocs) {
-    const docs = (await collectionDocs.find({}).toArray()) as IDocument[];
+    const docs = await collectionDocs.find<IDocument>({}).toArray();
     return docs;
   }
 }
@@ -38,7 +38,7 @@ export function addDocumentDB(name: string) {
 
 export function deleteDocumentDB(name: string) {
   if (collectionDocs) {
-    const deletion = collectionDocs.deleteOne({name: name})
-    return deletion
+    const deletion = collectionDocs.deleteOne({ name: name });
+    return deletion;
   }
 }
