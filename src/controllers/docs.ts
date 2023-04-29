@@ -1,16 +1,16 @@
-import collectionDocs from "../dbConnect.js";
+import { docsCollection } from "../dbConnect.js";
 import IDocument from "../../interfaces/Documents.js";
 
 export function findDocument(name: string) {
-  if (collectionDocs) {
-    const doc = collectionDocs.findOne({ name: name });
+  if (docsCollection) {
+    const doc = docsCollection.findOne({ name: name });
     return doc;
   }
 }
 
 export function updateDocumentDB(name: string, text: string) {
-  if (collectionDocs) {
-    const update = collectionDocs.updateOne(
+  if (docsCollection) {
+    const update = docsCollection.updateOne(
       { name: name },
       {
         $set: {
@@ -23,22 +23,25 @@ export function updateDocumentDB(name: string, text: string) {
 }
 
 export async function getDocuments() {
-  if (collectionDocs) {
-    const docs = await collectionDocs.find<IDocument>({}).toArray();
+  if (docsCollection) {
+    const docs = await docsCollection.find<IDocument>({}).toArray();
     return docs;
   }
 }
 
 export function addDocumentDB(name: string) {
-  if (collectionDocs) {
-    const result = collectionDocs.insertOne({ name: name, text: "" });
+  if (docsCollection) {
+    const result = docsCollection.insertOne({
+      name: name,
+      text: "",
+    });
     return result;
   }
 }
 
 export function deleteDocumentDB(name: string) {
-  if (collectionDocs) {
-    const deletion = collectionDocs.deleteOne({ name: name });
+  if (docsCollection) {
+    const deletion = docsCollection.deleteOne({ name: name });
     return deletion;
   }
 }
