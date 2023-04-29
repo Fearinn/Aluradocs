@@ -4,7 +4,7 @@ import { findUserByName, registerUser } from "../controllers/users.js";
 
 export function listenRegistration(socket: Socket, _: Server) {
   socket.on("register_user", async (user: IUser) => {
-    const alreadyExists = await findUserByName(user);
+    const alreadyExists = await findUserByName(user.name);
 
     if (alreadyExists) {
       socket.emit("failed_user_exists");
