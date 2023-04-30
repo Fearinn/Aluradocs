@@ -1,10 +1,14 @@
 const $docList = document.getElementById("lista-documentos");
+
 export const $form = document.getElementById(
   "form-adiciona-documento"
-) as HTMLFormElement;
+) as HTMLFormElement | null;
+
 export const $input = document.getElementById(
   "input-documento"
-) as HTMLInputElement;
+) as HTMLInputElement | null;
+
+export const $logoutButton = document.getElementById("botao-logout");
 
 export function insertDocumentLink(name: string) {
   if ($docList) {

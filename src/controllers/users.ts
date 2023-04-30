@@ -15,6 +15,6 @@ export function registerUser({ name, password }: IUser) {
 
 export function findUserByName(name: string) {
   if (usersCollection) {
-    return usersCollection.findOne({ name });
+    return usersCollection.findOne<IUser>({ name });
   }
 }
