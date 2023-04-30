@@ -1,7 +1,16 @@
-import { alertAndRedirect, documentName, updateText } from "./domManipulation.js";
+import { getCookie } from "../utils/cookie.js";
+import {
+  alertAndRedirect,
+  documentName,
+  updateText,
+} from "./domManipulation.js";
 
 //@ts-ignore
-const socket = io();
+const socket = io("/users", {
+  auth: {
+    token: getCookie("tokenJwt"),
+  },
+});
 
 export function emitTextArea(doc: { name: string; text: string }) {
   socket.emit("textarea", doc);
@@ -26,7 +35,12 @@ socket.on("document_text", (text: string) => {
 });
 
 socket.on("delete_document_clients", (name: string) => {
-  alertAndRedirect(name)
-})
+  alertAndRedirect(name);
+});
+
+socket.on("connect_error", () => {
+  alert("User not authorized! Please login.");
+  window.location.href = "/login.html";
+});
 
 if (documentName) selectDocument(documentName);

@@ -1,10 +1,10 @@
-import { Server, Socket } from "socket.io";
+import { Namespace, Server, Socket } from "socket.io";
 import { IUser } from "../../interfaces/User";
 import { findUserByName } from "../controllers/users.js";
 import { createJwt } from "../utils/createJwt.js";
 import { authenticateUser } from "../utils/authenticateUser.js";
 
-export function listenLogin(socket: Socket, _: Server) {
+export function listenLogin(socket: Socket, _: Server | Namespace) {
   socket.on("authenticate_user", async ({ name, password }: IUser) => {
     const user = await findUserByName(name);
 

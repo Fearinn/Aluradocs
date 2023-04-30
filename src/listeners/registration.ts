@@ -1,8 +1,8 @@
-import { Server, Socket } from "socket.io";
+import { Namespace, Server, Socket } from "socket.io";
 import { IUser } from "../../interfaces/User";
 import { findUserByName, registerUser } from "../controllers/users.js";
 
-export function listenRegistration(socket: Socket, _: Server) {
+export function listenRegistration(socket: Socket, _: Server | Namespace) {
   socket.on("register_user", async (user: IUser) => {
     const alreadyExists = await findUserByName(user.name);
 

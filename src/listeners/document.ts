@@ -1,7 +1,7 @@
-import { Server, Socket } from "socket.io";
+import { Namespace, Server, Socket } from "socket.io";
 import { deleteDocumentDB, updateDocumentDB } from "../controllers/docs.js";
 
-export function listenDoc(socket: Socket, io: Server) {
+export function listenDoc(socket: Socket, io: Server | Namespace) {
   socket.on("delete_document", async (name: string) => {
     const deletion = await deleteDocumentDB(name);
 

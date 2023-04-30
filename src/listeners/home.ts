@@ -1,4 +1,4 @@
-import { Server, Socket } from "socket.io";
+import { Namespace, Server, Socket } from "socket.io";
 import IDocument from "../../interfaces/Documents";
 import {
   getDocuments,
@@ -6,7 +6,7 @@ import {
   addDocumentDB,
 } from "../controllers/docs.js";
 
-export function listenHome(socket: Socket, io: Server) {
+export function listenHome(socket: Socket, io: Server | Namespace) {
   socket.on(
     "request_documents",
     async (sendDocuments: (docs: IDocument[]) => void) => {
