@@ -5,6 +5,7 @@ import {
   findDocument,
   addDocumentDB,
 } from "../controllers/docs.js";
+import { IConnection } from "../../interfaces/Connection";
 
 export function listenHome(socket: Socket, io: Server | Namespace) {
   socket.on(
@@ -30,9 +31,9 @@ export function listenHome(socket: Socket, io: Server | Namespace) {
 
   socket.on(
     "select_document",
-    async (name: string, callback: (text: string) => {}) => {
-      socket.join(name);
-      const doc = await findDocument(name);
+    async (connection: IConnection, callback: (text: string) => void) => {
+      socket.join(connection.documentName);
+      const doc = await findDocument(connection.documentName);
       if (doc && doc.text) callback(doc.text);
     }
   );

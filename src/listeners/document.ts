@@ -15,7 +15,7 @@ import { IConnection } from "../../interfaces/Connection.js";
 export function listenDoc(socket: Socket, io: Server | Namespace) {
   socket.on(
     "select_document",
-    async ({ documentName, username }: IConnection, sendDocument) => {
+    async ({ documentName, username }: IConnection) => {
       const document = await findDocument(documentName);
 
       if (document) {
@@ -35,8 +35,6 @@ export function listenDoc(socket: Socket, io: Server | Namespace) {
           const usersInDocument = getConnections(documentName);
 
           io.to(documentName).emit("users_in_document", usersInDocument);
-
-          sendDocument(documentName);
         }
       }
 
@@ -58,7 +56,7 @@ export function listenDoc(socket: Socket, io: Server | Namespace) {
 
       socket.on("disconnect", () => {
         if (!socket.data.userIn) return;
-        
+
         removeConnection({ documentName, username });
 
         const usersInDocument = getConnections(documentName);

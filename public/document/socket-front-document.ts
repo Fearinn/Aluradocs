@@ -23,8 +23,8 @@ export function deleteDocument(name: string) {
   socket.emit("delete_document", name);
 }
 
-socket.on("textarea_clients", (texto: string) => {
-  updateText(texto);
+socket.on("textarea_clients", (text: string) => {
+  updateText(text);
 });
 
 socket.on("document_text", (text: string) => {
