@@ -12,7 +12,7 @@ export const $logoutButton = document.getElementById("botao-logout");
 
 export function insertDocumentLink(name: string) {
   if ($docList) {
-    $docList.innerHTML += `<a href="documento.html?nome=${name}" id="${name}" class="list-group-item list-group-item-action">
+    $docList.innerHTML += `<a href="document.html?nome=${name}" id="${name}" class="list-group-item list-group-item-action">
    ${name}
  </a>`;
   }
