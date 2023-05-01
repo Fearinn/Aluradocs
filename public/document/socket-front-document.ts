@@ -1,9 +1,12 @@
+import { JwtPayload } from "jsonwebtoken";
 import { getCookie } from "../utils/cookie.js";
 import {
   alertAndRedirect,
   documentName,
+  updateConnectedUsers,
   updateText,
 } from "./domManipulation.js";
+import { IConnection } from "../../interfaces/Connection.js";
 
 //@ts-ignore
 const socket = io("/users", {
@@ -14,12 +17,6 @@ const socket = io("/users", {
 
 export function emitTextArea(doc: { name: string; text: string }) {
   socket.emit("textarea", doc);
-}
-
-function selectDocument(name: string) {
-  socket.emit("select_document", name, (text: string) => {
-    updateText(text);
-  });
 }
 
 export function deleteDocument(name: string) {
@@ -43,4 +40,21 @@ socket.on("connect_error", () => {
   window.location.href = "/login.html";
 });
 
-if (documentName) selectDocument(documentName);
+function selectDocument(connection: IConnection) {
+  socket.emit("select_document", connection, (text: string) => {
+    updateText(text);
+  });
+}
+
+function handleAuthorization(payload: JwtPayload) {
+  if (documentName) selectDocument({ documentName, username: payload.name });
+}
+
+socket.on("user_authorized-doc", handleAuthorization);
+
+socket.on("users_in_document", updateConnectedUsers);
+
+socket.on("user_already_in_document", () => {
+  alert("Document open in other page");
+  window.location.href = "/";
+});

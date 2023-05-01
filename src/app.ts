@@ -13,6 +13,8 @@ nspUsers.use((socket, next) => {
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET!);
 
+    socket.emit("user_authorized-doc", payload);
+
     next();
   } catch (err: any) {
     next(err);
